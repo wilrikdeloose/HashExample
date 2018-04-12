@@ -1,10 +1,8 @@
-package Models;
-
-import BLL.Password;
+package BLL.Encryption;
 
 import java.util.Arrays;
 
-public class PBKDF2Password extends Password {
+public class PBKDF2Password implements Password {
     private byte[] hash;
     private byte[] salt;
     private int iterations;

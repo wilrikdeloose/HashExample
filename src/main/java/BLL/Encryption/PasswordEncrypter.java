@@ -1,6 +1,6 @@
-package Models;
+package BLL.Encryption;
 
-import BLL.Password;
+import BLL.Encryption.Password;
 
 public interface PasswordEncryptor {
     Password encrypt(String password);

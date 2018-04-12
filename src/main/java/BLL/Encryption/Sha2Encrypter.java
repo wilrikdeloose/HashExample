@@ -1,4 +1,4 @@
-package Models;
+package BLL.Encryption;
 
 import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
@@ -7,7 +7,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 
-public class PBKDF2Encryptor implements PasswordEncryptor {
+public class PBKDF2Encrypter implements PasswordEncrypter {
     private final int ITERATIONS = 10000;
     private final int KEYLENGTH = 256;
 
@@ -29,11 +29,6 @@ public class PBKDF2Encryptor implements PasswordEncryptor {
         } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public PBKDF2Password encrypt(String password, byte[] salt) {
-        this.salt = salt;
-        return encrypt(password);
     }
 
     private byte[] generateSalt() {
