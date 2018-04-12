@@ -1,5 +1,5 @@
-package BLL;
+package BLL.Encryption;
 
 public enum EncryptionAlgorithms {
-    PBKDF2
+    SHA2
 }

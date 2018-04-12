@@ -1,10 +1,12 @@
 package Models;
 
+import BLL.Encryption.Password;
+
 public class Account {
     private String username;
-    private PBKDF2Password password;
+    private Password password;
 
-    public Account(String username, PBKDF2Password password) {
+    public Account(String username, Password password) {
         this.username = username;
         this.password = password;
     }
@@ -13,7 +15,7 @@ public class Account {
         return username;
     }
 
-    public PBKDF2Password getPassword() {
+    public Password getPassword() {
         return password;
     }
 }

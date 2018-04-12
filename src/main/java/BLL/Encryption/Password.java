@@ -1,4 +1,7 @@
-package BLL;
+package BLL.Encryption;
 
-public abstract class Password {
+public interface Password {
+    @Override
+    boolean equals(Object o);
+    byte[] getSalt();
 }

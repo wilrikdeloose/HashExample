@@ -1,10 +1,9 @@
 package BLL;
 
+import BLL.Encryption.*;
 import BLL.Exceptions.*;
 import DAL.AccountContext;
 import DAL.AccountMemoryContext;
-import Models.PBKDF2Encryptor;
-import Models.PBKDF2Password;
 
 public class AccountRepository {
     private final int USERNAME_MINIMAL_LENGTH = 6;
@@ -14,14 +13,17 @@ public class AccountRepository {
     AccountContext context = new AccountMemoryContext();
 
     // local encryptor object
-    PBKDF2Encryptor encryptor = (PBKDF2Encryptor)EncryptorFactory.getEncryptor(EncryptionAlgorithms.PBKDF2);
+    PasswordEncrypter encrypter;
 
-    public void login(String username, String password) {
+    public AccountRepository() {
+        encrypter = EncrypterFactory.getEncrypter(EncryptionAlgorithms.SHA2);
+    }
 
+    public void login(String username, String passwordString) {
         byte[] salt = context.getSaltByUsername(username);
-        PBKDF2Password safePassword = encryptor.encrypt(password, salt);
+        Password password = encrypter.encrypt(passwordString, salt);
 
-        if (context.login(username, safePassword)) {
+        if (context.login(username, password)) {
             System.out.println("Login successful!");
         } else {
             System.out.println("Login unsuccessful!");
@@ -40,7 +42,7 @@ public class AccountRepository {
         }
 
         // generate salt and hashed password
-        PBKDF2Password safePassword = encryptor.encrypt(password);
+        Password safePassword = encrypter.encrypt(password);
 
         if (context.register(username, safePassword)) {
             System.out.println("Account successfully registered!");

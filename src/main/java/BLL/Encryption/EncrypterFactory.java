@@ -1,14 +1,11 @@
 package BLL.Encryption;
 
-public class EncryptorFactory {
-    static public PasswordEncrypter getEncrypter(EncryptionAlgorithms alg) {
-        switch (alg) {
-            case PBKDF2:
-                return new PBKDF2Encrypter();
-
-            case PlainText:
+public class EncrypterFactory {
+    static public PasswordEncrypter getEncrypter(EncryptionAlgorithms algorithm) {
+        switch (algorithm) {
             default:
-                return new PlainTextEncrypter();
+            case SHA2:
+                return new Sha2Encrypter();
         }
     }
 }

@@ -11,7 +11,7 @@ import UI.Exceptions.WrongArgumentsException;
 import java.util.Scanner;
 
 public class ConsoleApp {
-    public void run() {
+    public void start() {
 
         menu();
         System.out.print("> ");
@@ -67,7 +67,11 @@ public class ConsoleApp {
         System.out.println("Type exit to close the application or type menu to see this menu again.");
     }
 
-    private void register(String args[]) {
+    private void register(String args[]) throws WrongArgumentsException {
+        if (args.length != 2) {
+            throw new WrongArgumentsException("ERROR: Wrong arguments!");
+        }
+
         String username = args[0];
         String password = args[1];
 

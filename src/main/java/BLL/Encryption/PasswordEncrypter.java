@@ -1,7 +1,6 @@
 package BLL.Encryption;
 
-import BLL.Encryption.Password;
-
-public interface PasswordEncryptor {
+public interface PasswordEncrypter {
     Password encrypt(String password);
+    Password encrypt(String password, byte[] salt);
 }
