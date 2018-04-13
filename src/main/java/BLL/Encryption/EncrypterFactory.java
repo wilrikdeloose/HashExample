@@ -1,7 +1,7 @@
 package BLL.Encryption;
 
 public class EncrypterFactory {
-    static public PasswordEncrypter getEncrypter(EncryptionAlgorithms algorithm) {
+    static public PasswordEncrypter getEncrypter(EncryptionAlgorithm algorithm) {
         switch (algorithm) {
             default:
             case Simple:

@@ -8,13 +8,19 @@ public class ConsoleInput {
     private String[] args;
 
     public ConsoleInput(String input) throws InvalidInputException {
-        if (input == null) {
+        String trimmedInput = input.trim();
+
+        if (trimmedInput == null || trimmedInput.equals("")) {
             throw new InvalidInputException("ERROR: Invalid input!");
         }
 
-        String[] array = input.split("\\s+");
-        command = array[0];
-        args = Arrays.copyOfRange(array, 1, array.length);
+        String[] array = trimmedInput.split("\\s+");
+        if (array.length > 0) {
+            command = array[0];
+            args = Arrays.copyOfRange(array, 1, array.length);
+        } else {
+            throw new InvalidInputException("ERROR: Invalid input!");
+        }
     }
 
     public String getCommand() {

@@ -5,6 +5,7 @@ import Models.Account;
 import java.util.ArrayList;
 
 public class AccountMemoryContext implements AccountContext {
+    // static so that it behaves as a sort of centralized database
     static private ArrayList<Account> accounts = new ArrayList<>();
 
     @Override
@@ -44,7 +45,14 @@ public class AccountMemoryContext implements AccountContext {
         if (a != null) {
             return a.getPassword().getSalt();
         } else {
-            return new byte[0];
+            return null;
         }
+    }
+
+    /*
+    This method clears (empties) the memory context (DB). This is purely for testing purposes.
+     */
+    public void clear() {
+        accounts.clear();
     }
 }

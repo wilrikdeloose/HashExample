@@ -18,8 +18,7 @@ public class ConsoleApp {
 
         while (true) {
             try {
-                ConsoleInput input = getInput();
-                handleInput(input);
+                handleInput(getInput());
             } catch (InvalidInputException | UnknownCommandException | WrongArgumentsException e) {
                 System.out.println(e.getMessage());
             }

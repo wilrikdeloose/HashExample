@@ -16,21 +16,23 @@ public class AccountRepository {
     PasswordEncrypter encrypter;
 
     public AccountRepository() {
-        encrypter = EncrypterFactory.getEncrypter(EncryptionAlgorithms.SHA2);
+        encrypter = EncrypterFactory.getEncrypter(EncryptionAlgorithm.SHA2);
     }
 
-    public void login(String username, String passwordString) {
+    public boolean login(String username, String passwordString) {
         byte[] salt = context.getSaltByUsername(username);
         Password password = encrypter.encrypt(passwordString, salt);
 
         if (context.login(username, password)) {
             System.out.println("Login successful!");
+            return true;
         } else {
             System.out.println("Login unsuccessful :(");
+            return false;
         }
     }
 
-    public void register(String username, String passwordString) throws UsernameAlreadyExistsException, UsernameTooShortException, PasswordTooWeakException {
+    public boolean register(String username, String passwordString) throws UsernameAlreadyExistsException, UsernameTooShortException, PasswordTooWeakException {
         if (usernameAlreadyExists(username)) {
             throw new UsernameAlreadyExistsException("ERROR: This username is already taken!");
         }
@@ -46,8 +48,10 @@ public class AccountRepository {
 
         if (context.register(username, password)) {
             System.out.println("Account successfully registered!");
+            return true;
         } else {
             System.out.println("Account was not registered :(");
+            return false;
         }
     }
 
