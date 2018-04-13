@@ -26,26 +26,28 @@ public class AccountRepository {
         if (context.login(username, password)) {
             System.out.println("Login successful!");
         } else {
-            System.out.println("Login unsuccessful!");
+            System.out.println("Login unsuccessful :(");
         }
     }
 
-    public void register(String username, String password) throws UsernameAlreadyExistsException, UsernameTooShortException, PasswordTooWeakException {
+    public void register(String username, String passwordString) throws UsernameAlreadyExistsException, UsernameTooShortException, PasswordTooWeakException {
         if (usernameAlreadyExists(username)) {
             throw new UsernameAlreadyExistsException("ERROR: This username is already taken!");
         }
         if (usernameTooShort(username)) {
             throw new UsernameTooShortException("ERROR: The chosen username is too short!");
         }
-        if (passwordToWeak(password)) {
+        if (passwordToWeak(passwordString)) {
             throw new PasswordTooWeakException("ERROR: The chosen password is too weak!");
         }
 
         // generate salt and hashed password
-        Password safePassword = encrypter.encrypt(password);
+        Password password = encrypter.encrypt(passwordString);
 
-        if (context.register(username, safePassword)) {
+        if (context.register(username, password)) {
             System.out.println("Account successfully registered!");
+        } else {
+            System.out.println("Account was not registered :(");
         }
     }
 

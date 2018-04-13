@@ -10,14 +10,16 @@ import java.security.spec.InvalidKeySpecException;
 public class Sha2Encrypter implements PasswordEncrypter {
     private final int ITERATIONS = 10000;
     private final int KEYLENGTH = 256;
+    private final int SALT_SIZE = 32;
 
-    private byte[] salt = null;
 
     @Override
     public Sha2Password encrypt(String password) {
-        if (salt == null) {
-            salt = generateSalt();
-        }
+        return this.encrypt(password, null);
+    }
+
+    public Sha2Password encrypt(String password, byte[] inputSalt) {
+        byte[] salt = inputSalt == null ? generateSalt() : inputSalt;
 
         try {
             SecretKeyFactory skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA512");
@@ -31,13 +33,8 @@ public class Sha2Encrypter implements PasswordEncrypter {
         }
     }
 
-    public Sha2Password encrypt(String password, byte[] salt) {
-        this.salt = salt;
-        return this.encrypt(password);
-    }
-
     private byte[] generateSalt() {
-        byte[] salt = new byte[32];
+        byte[] salt = new byte[SALT_SIZE];
         (new SecureRandom()).nextBytes(salt);
         return salt;
     }
