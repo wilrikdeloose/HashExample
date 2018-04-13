@@ -11,9 +11,9 @@ import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AccountMemoryContextTest {
-    Salt salt = new Salt();
-    SimplePassword pwd = new SimplePassword("password", salt.get());
-    AccountContext[] contexts;
+    private Salt salt = new Salt();
+    private SimplePassword pwd = new SimplePassword("password", salt);
+    private AccountContext[] contexts;
 
     @BeforeEach
     public void initialize() {
@@ -61,7 +61,7 @@ class AccountMemoryContextTest {
 
     @Test
     void loginWrongPassword() {
-        SimplePassword wrongPwd = new SimplePassword("paaswoord", (new Salt()).get());
+        SimplePassword wrongPwd = new SimplePassword("paaswoord", new Salt());
         for (AccountContext ctx: contexts) {
             boolean result = ctx.login("abcdef", wrongPwd);
             assertFalse(result);
@@ -104,8 +104,8 @@ class AccountMemoryContextTest {
     @Test
     void getSaltByUsernameOfExistingAccount() {
         for (AccountContext ctx: contexts) {
-            byte[] s = ctx.getSaltByUsername("abcdef");
-            boolean result = Arrays.equals(s, salt.get());
+            Salt s = ctx.getSaltByUsername("abcdef");
+            boolean result = s.equals(salt);
             assertTrue(result);
         }
     }
@@ -113,7 +113,7 @@ class AccountMemoryContextTest {
     @Test
     void getSaltByUsernameOfNonExistingAccount() {
         for (AccountContext ctx: contexts) {
-            byte[] s = ctx.getSaltByUsername("fail");
+            Salt s = ctx.getSaltByUsername("fail");
             assertTrue(s == null);
         }
     }

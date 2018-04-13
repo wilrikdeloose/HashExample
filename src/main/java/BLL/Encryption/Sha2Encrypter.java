@@ -16,12 +16,12 @@ public class Sha2Encrypter implements PasswordEncrypter {
         return this.encrypt(password, null);
     }
 
-    public Sha2Password encrypt(String password, byte[] inputSalt) {
-        byte[] salt = inputSalt == null ? (new Salt()).get() : inputSalt;
+    public Sha2Password encrypt(String password, Salt inputSalt) {
+        Salt salt = inputSalt == null ? new Salt() : inputSalt;
 
         try {
             SecretKeyFactory skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA512");
-            PBEKeySpec spec = new PBEKeySpec(password.toCharArray(), salt, ITERATIONS, KEYLENGTH);
+            PBEKeySpec spec = new PBEKeySpec(password.toCharArray(), salt.get(), ITERATIONS, KEYLENGTH);
             SecretKey key = skf.generateSecret(spec);
             byte[] hash = key.getEncoded();
 

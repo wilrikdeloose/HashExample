@@ -20,7 +20,7 @@ public class AccountRepository {
     }
 
     public boolean login(String username, String passwordString) {
-        byte[] salt = context.getSaltByUsername(username);
+        Salt salt = context.getSaltByUsername(username);
         Password password = encrypter.encrypt(passwordString, salt);
 
         if (context.login(username, password)) {

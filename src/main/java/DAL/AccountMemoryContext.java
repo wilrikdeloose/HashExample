@@ -1,12 +1,13 @@
 package DAL;
 
 import BLL.Encryption.Password;
+import BLL.Encryption.Salt;
 import Models.Account;
 import java.util.ArrayList;
 
 public class AccountMemoryContext implements AccountContext {
     // static so that it behaves as a sort of centralized database
-    static private ArrayList<Account> accounts = new ArrayList<>();
+    private ArrayList<Account> accounts = new ArrayList<>();
 
     @Override
     public boolean login(String username, Password password) {
@@ -39,7 +40,7 @@ public class AccountMemoryContext implements AccountContext {
     }
 
     @Override
-    public byte[] getSaltByUsername(String username) {
+    public Salt getSaltByUsername(String username) {
         Account a = getAccountByUsername(username);
 
         if (a != null) {

@@ -11,6 +11,8 @@ import UI.Exceptions.WrongArgumentsException;
 import java.util.Scanner;
 
 public class ConsoleApp {
+    AccountRepository repo = new AccountRepository();
+
     public void start() {
 
         menu();
@@ -75,7 +77,7 @@ public class ConsoleApp {
         String password = args[1];
 
         try {
-            (new AccountRepository()).register(username, password);
+            repo.register(username, password);
         }
         catch (UsernameAlreadyExistsException | UsernameTooShortException | PasswordTooWeakException e) {
             System.out.println(e.getMessage());
@@ -90,7 +92,7 @@ public class ConsoleApp {
         String username = args[0];
         String password = args[1];
 
-        (new AccountRepository()).login(username, password);
+        repo.login(username, password);
     }
 
     private void exit() {

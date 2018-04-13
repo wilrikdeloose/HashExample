@@ -29,7 +29,9 @@ class ConsoleInputTest {
             try {
                 new ConsoleInput(i);
                 fail("ConsoleInput should have thrown an InvalidInputException!");
-            } catch (InvalidInputException e) { }
+            } catch (InvalidInputException e) {
+                // pass
+            }
         }
     }
 

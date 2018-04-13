@@ -18,7 +18,7 @@ class AccountTest {
 
     @Test
     void getPassword() {
-        Password p = new SimplePassword("password", (new Salt()).get());
+        Password p = new SimplePassword("password", new Salt());
         Account a = new Account("username", p);
         boolean result = a.getPassword().equals(p);
     }

@@ -2,21 +2,16 @@ package BLL.Encryption;
 
 import java.util.Arrays;
 
-public class SimplePassword implements Password {
+public class SimplePassword extends Password {
     private String encryptedPassword;
-    private byte[] salt;
 
-    public SimplePassword(String password, byte[] salt) {
+    public SimplePassword(String password, Salt salt) {
+        super(salt);
         this.encryptedPassword = password;
-        this.salt = salt;
     }
 
     public String getEncryptedPassword() {
         return encryptedPassword;
-    }
-
-    public byte[] getSalt() {
-        return salt;
     }
 
     @Override
@@ -27,7 +22,7 @@ public class SimplePassword implements Password {
 
         SimplePassword p = (SimplePassword)o;
         boolean passIsEqual = p.getEncryptedPassword().equals(this.encryptedPassword);
-        boolean saltIsEqual = Arrays.equals(this.salt, p.getSalt());
+        boolean saltIsEqual = this.salt.equals(p.getSalt());
 
         return saltIsEqual && passIsEqual;
     }
