@@ -37,7 +37,7 @@ class EncrypterTest {
     }
 
     /*
-    This test fails about 50% of the time. The question to you is why?
+    TODO: This test fails about 50% of the time. The question to you is why?
      */
     @Test
     void encryptTwoTimeSameSaltDifferentPasswordGivesDifferentHash() {

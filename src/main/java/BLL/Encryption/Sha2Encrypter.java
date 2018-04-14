@@ -9,7 +9,6 @@ import java.security.spec.InvalidKeySpecException;
 public class Sha2Encrypter implements PasswordEncrypter {
     private final int ITERATIONS = 10000;
     private final int KEYLENGTH = 256;
-    private final int SALT_SIZE = 32;
 
     @Override
     public Sha2Password encrypt(String password) {
