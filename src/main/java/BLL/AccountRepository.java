@@ -23,13 +23,13 @@ public class AccountRepository {
         Salt salt = context.getSaltByUsername(username);
         Password password = encrypter.encrypt(passwordString, salt);
 
-        if (context.login(username, password)) {
+        boolean result = context.login(username, password);
+        if (result) {
             System.out.println("Login successful!");
-            return true;
         } else {
             System.out.println("Login unsuccessful :(");
-            return false;
         }
+        return result;
     }
 
     public boolean register(String username, String passwordString) throws UsernameAlreadyExistsException, UsernameTooShortException, PasswordTooWeakException {
