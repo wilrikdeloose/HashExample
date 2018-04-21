@@ -1,9 +1,11 @@
 package BLL.Encryption;
 
+import Encryption.EncrypterFactory;
+import Encryption.EncryptionAlgorithm;
+import Encryption.Password;
+import Encryption.PasswordEncrypter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 

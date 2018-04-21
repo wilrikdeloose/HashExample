@@ -1,4 +1,4 @@
-package BLL.Encryption;
+package Encryption;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;

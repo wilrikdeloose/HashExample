@@ -1,12 +1,10 @@
 package DAL;
 
-import BLL.Encryption.Salt;
-import BLL.Encryption.SimplePassword;
-import Models.Account;
+import Encryption.Salt;
+import Encryption.SimplePassword;
+import Domain.Account;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 

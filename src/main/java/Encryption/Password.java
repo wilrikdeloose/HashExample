@@ -1,4 +1,4 @@
-package BLL.Encryption;
+package Encryption;
 
 public abstract class Password {
     protected Salt salt;

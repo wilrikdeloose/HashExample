@@ -1,4 +1,4 @@
-package BLL.Encryption;
+package Encryption;
 
 public class SimpleEncrypter implements PasswordEncrypter {
 

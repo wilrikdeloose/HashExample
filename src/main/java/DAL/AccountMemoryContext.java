@@ -1,8 +1,8 @@
 package DAL;
 
-import BLL.Encryption.Password;
-import BLL.Encryption.Salt;
-import Models.Account;
+import Encryption.Password;
+import Encryption.Salt;
+import Domain.Account;
 import java.util.ArrayList;
 
 public class AccountMemoryContext implements AccountContext {

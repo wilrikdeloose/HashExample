@@ -1,4 +1,4 @@
-package BLL.Encryption;
+package Encryption;
 
 public interface PasswordEncrypter {
     Password encrypt(String password);

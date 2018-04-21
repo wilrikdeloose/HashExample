@@ -1,6 +1,6 @@
-package Models;
+package Domain;
 
-import BLL.Encryption.Password;
+import Encryption.Password;
 
 public class Account {
     private String username;

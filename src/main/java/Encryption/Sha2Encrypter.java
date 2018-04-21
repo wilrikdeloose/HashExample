@@ -1,4 +1,4 @@
-package BLL.Encryption;
+package Encryption;
 
 import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;

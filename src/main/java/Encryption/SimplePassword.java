@@ -1,6 +1,4 @@
-package BLL.Encryption;
-
-import java.util.Arrays;
+package Encryption;
 
 public class SimplePassword extends Password {
     private String encryptedPassword;

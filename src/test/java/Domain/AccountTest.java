@@ -1,12 +1,9 @@
-package Models;
+package Domain;
 
-import BLL.Encryption.Password;
-import BLL.Encryption.Salt;
-import BLL.Encryption.Sha2Password;
-import BLL.Encryption.SimplePassword;
+import Encryption.Password;
+import Encryption.Salt;
+import Encryption.SimplePassword;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class AccountTest {
 

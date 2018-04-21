@@ -1,9 +1,11 @@
 package UI;
 
-import BLL.AccountRepository;
+import BLL.AccountLogic;
 import BLL.Exceptions.PasswordTooWeakException;
 import BLL.Exceptions.UsernameAlreadyExistsException;
 import BLL.Exceptions.UsernameTooShortException;
+import DAL.AccountContextFactory;
+import DAL.ContextType;
 import UI.Exceptions.InvalidInputException;
 import UI.Exceptions.UnknownCommandException;
 import UI.Exceptions.WrongArgumentsException;
@@ -11,7 +13,8 @@ import UI.Exceptions.WrongArgumentsException;
 import java.util.Scanner;
 
 public class ConsoleApp {
-    AccountRepository repo = new AccountRepository();
+    // we use a memory context here, but in production you would want to use the database context for instance
+    AccountLogic accountLogic = new AccountLogic((new AccountContextFactory()).get(ContextType.Memory));
 
     public void start() {
 
@@ -77,7 +80,7 @@ public class ConsoleApp {
         String password = args[1];
 
         try {
-            repo.register(username, password);
+            accountLogic.register(username, password);
         }
         catch (UsernameAlreadyExistsException | UsernameTooShortException | PasswordTooWeakException e) {
             System.out.println(e.getMessage());
@@ -92,7 +95,7 @@ public class ConsoleApp {
         String username = args[0];
         String password = args[1];
 
-        repo.login(username, password);
+        accountLogic.login(username, password);
     }
 
     private void exit() {
