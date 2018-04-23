@@ -1,4 +1,4 @@
-package Factoriy;
+package Factory;
 
 import DAL.AccountContext;
 import DAL.AccountMemoryContext;

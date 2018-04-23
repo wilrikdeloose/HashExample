@@ -3,7 +3,7 @@ package BLL;
 import BLL.Exceptions.*;
 import DAL.AccountContext;
 import Encryption.*;
-import Factoriy.EncrypterFactory;
+import Factory.EncrypterFactory;
 
 public class AccountLogic {
     private final int USERNAME_MINIMAL_LENGTH = 6;

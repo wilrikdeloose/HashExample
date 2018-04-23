@@ -1,6 +1,6 @@
 package BLL.Encryption;
 
-import Factoriy.EncrypterFactory;
+import Factory.EncrypterFactory;
 import Encryption.EncryptionAlgorithm;
 import Encryption.Password;
 import Encryption.PasswordEncrypter;

@@ -1,7 +1,7 @@
-package BLL.Encryption;
+package Factory;
 
 import Encryption.*;
-import Factoriy.EncrypterFactory;
+import Factory.EncrypterFactory;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

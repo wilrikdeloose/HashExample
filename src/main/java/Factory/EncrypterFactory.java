@@ -1,4 +1,4 @@
-package Factoriy;
+package Factory;
 
 import Encryption.EncryptionAlgorithm;
 import Encryption.PasswordEncrypter;
