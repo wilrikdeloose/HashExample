@@ -1,7 +1,12 @@
-package Encryption;
+package Factoriy;
+
+import Encryption.EncryptionAlgorithm;
+import Encryption.PasswordEncrypter;
+import Encryption.Sha2Encrypter;
+import Encryption.SimpleEncrypter;
 
 public class EncrypterFactory {
-    static public PasswordEncrypter getEncrypter(EncryptionAlgorithm algorithm) {
+    static public PasswordEncrypter get(EncryptionAlgorithm algorithm) {
         switch (algorithm) {
             default:
             case Simple:

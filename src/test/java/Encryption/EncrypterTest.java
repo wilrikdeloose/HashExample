@@ -1,6 +1,6 @@
 package BLL.Encryption;
 
-import Encryption.EncrypterFactory;
+import Factoriy.EncrypterFactory;
 import Encryption.EncryptionAlgorithm;
 import Encryption.Password;
 import Encryption.PasswordEncrypter;
@@ -16,8 +16,8 @@ class EncrypterTest {
     @BeforeEach
     public void initialize() {
         encrypters = new PasswordEncrypter[2];
-        encrypters[0] = EncrypterFactory.getEncrypter(EncryptionAlgorithm.SHA2);
-        encrypters[1] = EncrypterFactory.getEncrypter(EncryptionAlgorithm.Simple);
+        encrypters[0] = EncrypterFactory.get(EncryptionAlgorithm.SHA2);
+        encrypters[1] = EncrypterFactory.get(EncryptionAlgorithm.Simple);
     }
 
     @Test

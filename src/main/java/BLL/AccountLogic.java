@@ -3,6 +3,7 @@ package BLL;
 import BLL.Exceptions.*;
 import DAL.AccountContext;
 import Encryption.*;
+import Factoriy.EncrypterFactory;
 
 public class AccountLogic {
     private final int USERNAME_MINIMAL_LENGTH = 6;
@@ -16,7 +17,7 @@ public class AccountLogic {
 
     public AccountLogic(AccountContext context) {
         this.context = context;
-        encrypter = EncrypterFactory.getEncrypter(EncryptionAlgorithm.SHA2);
+        encrypter = EncrypterFactory.get(EncryptionAlgorithm.SHA2);
     }
 
     public boolean login(String username, String passwordString) {

@@ -1,6 +1,7 @@
 package BLL.Encryption;
 
 import Encryption.*;
+import Factoriy.EncrypterFactory;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -24,7 +25,7 @@ class EncrypterFactoryTest {
     @Test
     void getEncrypters() {
         for (Enc e: encs) {
-            PasswordEncrypter passwordEncrypter = encrypterFactory.getEncrypter(e.getEncryptionAlgoritm());
+            PasswordEncrypter passwordEncrypter = encrypterFactory.get(e.getEncryptionAlgoritm());
             assertTrue(e.getType().isInstance(passwordEncrypter));
         }
     }
