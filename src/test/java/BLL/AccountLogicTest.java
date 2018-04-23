@@ -16,7 +16,7 @@ class AccountLogicTest {
 
     @BeforeEach
     public void initialize() {
-        accountLogic = new AccountLogic((new AccountContextFactory()).get(ContextType.Memory));
+        accountLogic = new AccountLogic(AccountContextFactory.get(ContextType.Memory));
 
         try {
             accountLogic.register("abcdef", "1234567890");

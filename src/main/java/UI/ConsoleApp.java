@@ -14,11 +14,11 @@ import java.util.Scanner;
 
 public class ConsoleApp {
     // we use a memory context here, but in production you would want to use the database context for instance
-    AccountLogic accountLogic = new AccountLogic((new AccountContextFactory()).get(ContextType.Memory));
+    AccountLogic accountLogic = new AccountLogic(AccountContextFactory.get(ContextType.Memory));
 
     public void start() {
 
-        menu();
+        printMenu();
         System.out.print("> ");
 
         while (true) {
@@ -39,8 +39,8 @@ public class ConsoleApp {
 
     private void handleInput(ConsoleInput input) throws UnknownCommandException, WrongArgumentsException {
         switch (input.getCommand()) {
-            case "menu":
-                menu();
+            case "printMenu":
+                printMenu();
                 break;
 
             case "register":
@@ -60,7 +60,7 @@ public class ConsoleApp {
         }
     }
 
-    private void menu() {
+    private void printMenu() {
         System.out.println("Welcome to HashExample!");
         System.out.println("---------------------------------------------------------------");
         System.out.println("Register a new account using:");
@@ -68,7 +68,7 @@ public class ConsoleApp {
         System.out.println("Login to an existing account using:");
         System.out.println("  login <username> <password>");
         System.out.println();
-        System.out.println("Type exit to close the application or type menu to see this menu again.");
+        System.out.println("Type exit to close the application or type printMenu to see this printMenu again.");
     }
 
     private void register(String args[]) throws WrongArgumentsException {

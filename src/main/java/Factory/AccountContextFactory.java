@@ -6,7 +6,7 @@ import DAL.ContextType;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class AccountContextFactory {
-    public AccountContext get(ContextType contextType) {
+    static public AccountContext get(ContextType contextType) {
         switch (contextType) {
             case Memory:
                 return new AccountMemoryContext();
